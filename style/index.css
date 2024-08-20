@@ -1,0 +1,106 @@
+       /* Hero section */
+
+
+    /* Parallax section */
+    .parallax {
+        background-attachment: fixed;
+        background-size: cover;
+        background-position: center;
+        height: 800px;
+        color: white;
+        text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.7);
+        display: flex;
+        align-items: center;
+        justify-content: center;
+    }
+
+    .menu-item {
+        margin-bottom: 30px;
+    }
+
+    .footer {
+        background-color: #343a40;
+        color: white;
+        padding: 20px 0;
+    }
+    /* styles.css */
+
+#about {
+    background-image: url('about-background.jpg');
+    background-size: cover;
+    background-position: center;
+    color: #fff;
+    padding: 60px 0;
+    position: relative;
+}
+
+#about::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.4); /* Dark overlay for readability */
+    z-index: 1;
+}
+
+#about .container {
+    position: relative;
+    z-index: 2;
+}
+
+#about img {
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+#about h2 {
+    font-size: 2.5rem;
+    font-weight: 700;
+}
+
+#about p {
+    font-size: 1.2rem;
+    line-height: 1.6;
+}
+
+#about a.btn-primary {
+    background-color: #ff6f61; /* Attractive button color */
+    border-color: #ff6f61;
+}
+
+#about a.btn-primary:hover {
+    background-color: #ff3b30;
+    border-color: #ff3b30;
+}
+/* styles.css */
+
+/* Contact Section */
+#contact {
+    background-color: #f8f9fa;
+}
+
+#contact .form-control {
+    border-radius: 8px;
+}
+
+#contact .btn-primary {
+    background-color: #ff6f61;
+    border-color: #ff6f61;
+}
+
+#contact .btn-primary:hover {
+    background-color: #ff3b30;
+    border-color: #ff3b30;
+}
+
+#contact .d-flex {
+    padding: 20px;
+}
+
+#map {
+    /* Style untuk tampilan map */
+    background-color: #e9ecef;
+    border-radius: 8px;
+}
