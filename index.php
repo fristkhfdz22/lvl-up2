@@ -23,53 +23,54 @@
 
     <!-- Menu Section -->
     <section id="menu" class="py-5">
-        <div class="container">
-            <div class="row">
-                <div class="col text-center">
-                    <h2 class="display-5">Menu Kami</h2>
-                    <p class="lead">Pilihan makanan terbaik yang akan memanjakan lidah Anda</p>
-                </div>
-            </div>
-            <div class="row mt-4">
-                <?php
-                include 'db.php';
-                
-                $sql = "SELECT * FROM menu";
-                $result = $conn->query($sql);
-
-                if ($result->num_rows > 0) {
-                    // Output data of each row
-                    while($row = $result->fetch_assoc()) {
-                        echo '<div class="col-md-4 menu-item">';
-                        echo '<div class="card">';
-                        echo '<img src="uploads/' . htmlspecialchars($row["image"]) . '" class="card-img-top" alt="' . htmlspecialchars($row["title"]) . '">';
-                        echo '<div class="card-body">';
-                        echo '<h5 class="card-title">' . htmlspecialchars($row["title"]) . '</h5>';
-                        echo '<p class="card-text">' . htmlspecialchars($row["description"]) . '</p>';
-                        echo '<div class="input-group mb-3">';
-                        echo '<input type="number" class="form-control" id="menuQty' . htmlspecialchars($row["id"]) . '" min="0" value="0" onchange="calculateTotal()">';
-                        echo '<span class="input-group-text">x $' . htmlspecialchars($row["price"]) . '</span>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
-                        echo '</div>';
-                    }
-                } else {
-                    echo '<div class="col-12 text-center">Tidak ada item menu tersedia.</div>';
-                }
-                $conn->close();
-                ?>
-                
-            </div>
-            
-            <div class="row mt-4">
-                <div class="col text-center">
-            <h4>Total Biaya: $<span id="totalCost">0</span></h4>
-                    <button class="btn btn-success mt-3" onclick="placeOrder()">Buat Pesanan</button>
-                </div>
-            </div>
+    <div class="container">
+    <div class="row">
+        <div class="col text-center">
+            <h2 class="display-5">Menu Kami</h2>
+            <p class="lead">Pilihan makanan terbaik yang akan memanjakan lidah Anda</p>
         </div>
-        
+    </div>
+    <div class="row mt-4">
+        <?php
+        include 'db.php';
+
+        $sql = "SELECT * FROM menu";
+        $result = $conn->query($sql);
+
+        if ($result->num_rows > 0) {
+            // Output data of each row
+            while($row = $result->fetch_assoc()) {
+                $price = htmlspecialchars($row["price"]);
+                echo '<div class="col-md-4 menu-item">';
+                echo '<div class="card">';
+                echo '<img src="uploads/' . htmlspecialchars($row["image"]) . '" class="card-img-top" alt="' . htmlspecialchars($row["title"]) . '">';
+                echo '<div class="card-body">';
+                echo '<h5 class="card-title">' . htmlspecialchars($row["title"]) . '</h5>';
+                echo '<p class="card-text">' . htmlspecialchars($row["description"]) . '</p>';
+                echo '<div class="input-group mb-3">';
+                echo '<input type="number" class="form-control menu-qty" id="menuQty' . htmlspecialchars($row["id"]) . '" min="0" value="0" placeholder="$' . $price . '" onchange="calculateTotal()">';
+                echo '<span class="input-group-text">x $' . htmlspecialchars($row["price"]) . '</span>';
+                echo '<input type="hidden" class="menu-price" id="menuPrice' . htmlspecialchars($row["id"]) . '" value="' . $price . '">';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+                echo '</div>';
+            }
+        } else {
+            echo '<div class="col-12 text-center">Tidak ada item menu tersedia.</div>';
+        }
+        $conn->close();
+        ?>
+    </div>
+
+    <div class="row mt-4">
+        <div class="col text-center">
+            <h4>Total Biaya: $<span id="totalCost">0</span></h4>
+            <button class="btn btn-success mt-3" onclick="placeOrder()">Buat Pesanan</button>
+        </div>
+    </div>
+</div>
+
     </section>
 
     <!-- Parallax Section 1 -->
@@ -143,6 +144,12 @@
             </div>
         </div>
     </section>
+    <div class="notification" id="notification">
+    <div class="notification-content">
+        <p>Pesanan Anda telah dibuat!</p>
+        <button onclick="closeNotification()">OK</button>
+    </div>
+</div>
 
     <?php include 'footer.php'; ?>
     <?php include 'modal.php'; ?>

@@ -17,6 +17,83 @@
     .menu-item {
         margin-bottom: 30px;
     }
+/* Style untuk menu section */
+#menu {
+    background-color: #f8f9fa;
+    padding-top: 2rem;
+    padding-bottom: 2rem;
+}
+
+#menu .container {
+    max-width: 1200px;
+}
+
+.card {
+    border: none;
+    border-radius: 10px;
+    overflow: hidden; /* Agar efek hover pada gambar tidak keluar dari card */
+}
+
+.card-img-top {
+    border-top-left-radius: 10px;
+    border-top-right-radius: 10px;
+    height: 200px;
+    object-fit: cover;
+    transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.card-img-top:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+.card-title {
+    font-size: 1.25rem;
+    font-weight: bold;
+}
+
+.card-text {
+    font-size: 1rem;
+    color: #6c757d;
+}
+
+.input-group {
+    align-items: center;
+    margin-top: 1rem;
+}
+
+.input-group .form-control {
+    border-radius: 0.5rem;
+}
+
+.input-group .input-group-text {
+    background-color: #e9ecef;
+    border: 1px solid #ced4da;
+    border-radius: 0.5rem;
+}
+
+#totalCost {
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.btn-success {
+    background-color: #28a745;
+    border: none;
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-size: 1rem;
+    transition: background-color 0.3s, box-shadow 0.3s;
+}
+
+.btn-success:hover {
+    background-color: #218838;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
 
     .footer {
         background-color: #343a40;
@@ -103,4 +180,52 @@
     /* Style untuk tampilan map */
     background-color: #e9ecef;
     border-radius: 8px;
+}
+/* Style untuk notifikasi */
+.notification {
+    display: none; /* Mulai dengan notifikasi tersembunyi */
+    position: fixed;
+    top: 20%;
+    left: 50%;
+    transform: translate(-50%, -20%);
+    background-color: #28a745; /* Warna latar belakang hijau */
+    color: white;
+    padding: 20px;
+    border-radius: 12px;
+    box-shadow: 0 8px 16px rgba(0,0,0,0.3);
+    z-index: 1000;
+    width: 350px;
+    text-align: center;
+    animation: fadeInOut 4s ease-in-out;
+}
+
+/* Style konten notifikasi */
+.notification-content p {
+    margin: 0 0 15px;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.notification-content button {
+    background-color: #ffffff;
+    border: none;
+    color: #28a745;
+    padding: 10px 20px;
+    border-radius: 8px;
+    cursor: pointer;
+    font-size: 1em;
+    transition: background-color 0.3s, transform 0.3s;
+}
+
+.notification-content button:hover {
+    background-color: #f1f1f1;
+    transform: scale(1.05);
+}
+
+/* Animasi fade in dan fade out */
+@keyframes fadeInOut {
+    0% { opacity: 0; transform: translate(-50%, -30%); }
+    20% { opacity: 1; transform: translate(-50%, -20%); }
+    80% { opacity: 1; transform: translate(-50%, -20%); }
+    100% { opacity: 0; transform: translate(-50%, -30%); }
 }
